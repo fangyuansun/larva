@@ -1,0 +1,33 @@
+#include<stdio.h>
+//#include<iomanip>
+#include<math.h>
+#include<string>
+#include<memory.h>
+using namespace std;
+
+int main()
+{
+    int r=-1,k;
+    scanf("%d",&k);
+   
+    int* gap=new int[k];
+    memset(gap,-1,sizeof(int)*k);
+    int newindex=0;
+    while(1)
+    {
+        int temp;
+        scanf("%d",&temp);
+        if(temp<0)
+            break;
+        gap[(newindex++)%k]=temp;
+        newindex=newindex%k;
+        if(gap[k-1]>=0)
+            r=newindex;
+    }
+    if(r!=-1)
+    printf("%d",gap[r]);
+    else
+        printf("NULL");
+   
+    delete[] gap;
+}
